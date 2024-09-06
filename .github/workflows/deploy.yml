@@ -26,8 +26,9 @@ jobs:
       - name: Deploy to Render
         env:
           RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+          RENDER_SERVICE_ID: ${{ secrets.SERVICE_ID }}  # Use SERVICE_ID here
         run: |
-          curl -X POST "https://api.render.com/v1/services/secrets.SERVICE_ID/deploys" \
+          curl -X POST "https://api.render.com/v1/services/${{ secrets.SERVICE_ID }}/deploys" \
                -H "Accept: application/json" \
                -H "Authorization: Bearer $RENDER_API_KEY" \
                -H "Content-Type: application/json" \
